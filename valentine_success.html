@@ -11,7 +11,7 @@
     body {
       background: url("success_background.jpg") no-repeat center center;
       background-size: cover;
-      background-attachment: scroll;
+      background-attachment: fixed;
       text-align: center;
       font-family: "Arial", sans-serif;
       margin: 0;
@@ -23,32 +23,53 @@
       color: white;
       text-shadow: 3px 3px 0 #ff6699, -3px -3px 0 #ff6699;
       margin-top: 20px;
-      font-size: 6vw; /* Responsive */
+      font-size: 2rem; /* This is for desktop */
     }
 
     p {
       font-family: "Patrick Hand", cursive;
-      font-size: 4vw; /* Responsive */
+      font-size: 1.5rem; /* For desktop */
       color: #f71c74;
     }
 
     #happy-image {
-      width: 80%;
-      max-width: 400px;
+      width: 60%;
+      max-width: 300px;
       border-radius: 10px;
       margin-top: 20px;
     }
 
     #play-again {
       margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 5vw; /* Responsive */
+      padding: 15px 30px;
+      font-size: 1.2rem;
       background-color: #ff6699;
       color: white;
       border: none;
       border-radius: 10px;
       cursor: pointer;
       font-family: "Press Start 2P", cursive;
+      transition: 0.3s;
+    }
+
+    #play-again:hover {
+      background-color: #ff3366;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 5vw; /* Makes h1 scalable on mobile */
+      }
+
+      p {
+        font-size: 4vw; /* Makes paragraph scalable on mobile */
+      }
+
+      #play-again {
+        font-size: 4vw;
+        padding: 10px 20px;
+      }
     }
   </style>
 </head>
