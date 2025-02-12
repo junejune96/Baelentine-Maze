@@ -9,9 +9,8 @@
 
   <style>
     body {
-      background: url("pink.jpg") no-repeat center center;
+      background: url("pink.jpg") no-repeat center center fixed;
       background-size: cover;
-      background-attachment: scroll;
       text-align: center;
       font-family: "Arial", sans-serif;
       margin: 0;
@@ -21,30 +20,30 @@
     h1 {
       font-family: "Press Start 2P", cursive;
       color: white;
-      text-shadow: 3px 3px 0 #ff6699, -3px -3px 0 #ff6699;
+      text-shadow: 3px 3px 0 #ff6699, -3px -3px 0 #ff6699, -3px 3px 0 #ff6699, 3px -3px 0 #ff6699;
       margin-top: 20px;
-      font-size: 6vw; /* Responsive */
+      font-size: 2rem; /* This is for desktop */
     }
 
     p {
       font-family: "Patrick Hand", cursive;
-      font-size: 4vw; /* Responsive */
+      font-size: 1.5rem; /* For desktop */
       color: #f71c74;
-      display: inline-block;
     }
 
     #maze {
       display: grid;
-      grid-template-columns: repeat(10, minmax(30px, 8vw)); /* Responsive */
+      grid-template-columns: repeat(10, 40px);
       gap: 5px;
       justify-content: center;
       margin: 20px auto;
       padding: 15px;
+      width: fit-content;
     }
 
     .cell {
-      width: minmax(30px, 8vw);
-      height: minmax(30px, 8vw);
+      width: 40px;
+      height: 40px;
       background-color: #fcc0d4;
       border-radius: 8px;
     }
@@ -53,79 +52,87 @@
       background-color: #ff4f95;
     }
 
-    .player, .goal, .broken-heart {
-      background-size: cover;
-      width: minmax(30px, 8vw);
-      height: minmax(30px, 8vw);
-      border-radius: 10px;
-    }
-
     .player {
       background-image: url("baekhyun.png");
+      background-size: cover;
+      width: 40px;
+      height: 40px;
       border: 1px solid #ff3385;
+      border-radius: 10px;
     }
 
     .goal {
       background-image: url("heart.png");
+      background-size: cover;
+      border: 1px solid #ff3385;
+      border-radius: 10px;
     }
 
     .broken-heart {
       background-image: url("broken_heart.png");
-    }
-
-    #start-music {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 18px;
-      background-color: #ff4f95;
-      color: white;
-      border: none;
+      background-size: cover;
+      border: 1px solid #ff3385;
       border-radius: 10px;
-      cursor: pointer;
     }
 
-    #mobile-controls {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 20px;
+    #play-music {
+      position: absolute;
+      top: -1000px;
+      opacity: 0;
     }
 
-    .control-btn {
-      font-size: 24px;
-      margin: 5px;
-      padding: 10px;
-      border: none;
-      background-color: #ff6699;
-      color: white;
-      border-radius: 10px;
-      cursor: pointer;
-      width: 60px;
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 5vw; /* Makes h1 scalable on mobile */
+      }
+
+      p {
+        font-size: 4vw; /* Makes paragraph scalable on mobile */
+      }
+
+      #maze {
+        grid-template-columns: repeat(5, 35px); /* Adjust maze grid on mobile */
+        width: 80%; /* Ensure the maze doesn't take full screen */
+        margin: 10px auto;
+      }
+
+      .cell {
+        width: 35px;
+        height: 35px;
+      }
+
+      .player {
+        width: 35px;
+        height: 35px;
+      }
+
+      .goal {
+        width: 35px;
+        height: 35px;
+      }
+
+      .broken-heart {
+        width: 35px;
+        height: 35px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <h1> Pick Your Valentine 💫 <3</h1>
+  <h1>Pick Your Valentine 💫</h1>
   <p>Move Kyoongie to the heart of your choice!</p>
 
-  <button id="start-music">Start Music</button>
+  <!-- Hidden button to start music on first click -->
+  <button id="play-music">Play Music</button>
 
+  <!-- Auto-playing music -->
   <audio id="bg-music" loop>
     <source src="music.mp3" type="audio/mpeg" />
   </audio>
 
   <div id="maze"></div>
-
-  <!-- Mobile Controls -->
-  <div id="mobile-controls">
-    <button class="control-btn" onclick="movePlayer(0, -1)">⬆️</button>
-    <div>
-      <button class="control-btn" onclick="movePlayer(-1, 0)">⬅️</button>
-      <button class="control-btn" onclick="movePlayer(1, 0)">➡️</button>
-    </div>
-    <button class="control-btn" onclick="movePlayer(0, 1)">⬇️</button>
-  </div>
 
   <script>
     const mazeLayout = [
@@ -151,10 +158,15 @@
         for (let x = 0; x < mazeLayout[y].length; x++) {
           const cell = document.createElement("div");
           cell.classList.add("cell");
-          if (mazeLayout[y][x] === 1) cell.classList.add("wall");
-          else if (x === playerPos.x && y === playerPos.y) cell.classList.add("player");
-          else if (x === goalPos.x && y === goalPos.y) cell.classList.add("goal");
-          else if (x === brokenHeartPos.x && y === brokenHeartPos.y) cell.classList.add("broken-heart");
+          if (mazeLayout[y][x] === 1) {
+            cell.classList.add("wall");
+          } else if (x === playerPos.x && y === playerPos.y) {
+            cell.classList.add("player");
+          } else if (x === goalPos.x && y === goalPos.y) {
+            cell.classList.add("goal");
+          } else if (x === brokenHeartPos.x && y === brokenHeartPos.y) {
+            cell.classList.add("broken-heart");
+          }
           maze.appendChild(cell);
         }
       }
@@ -168,10 +180,16 @@
         playerPos.y = newY;
         drawMaze();
         if (newX === goalPos.x && newY === goalPos.y) {
-          setTimeout(() => (window.location.href = "valentine_success.html"), 100);
+          setTimeout(
+            () => (window.location.href = "valentine_success.html"),
+            100
+          );
         }
         if (newX === brokenHeartPos.x && newY === brokenHeartPos.y) {
-          setTimeout(() => (window.location.href = "valentine_fail.html"), 100);
+          setTimeout(
+            () => (window.location.href = "valentine_fail.html"),
+            100
+          );
         }
       }
     }
@@ -183,9 +201,18 @@
       if (e.key === "ArrowRight") movePlayer(1, 0);
     });
 
-    document.getElementById("start-music").addEventListener("click", () => {
-      document.getElementById("bg-music").play();
-    });
+    // Ensure the music plays even if the browser blocks autoplay
+    function startMusic() {
+      const bgMusic = document.getElementById("bg-music");
+      bgMusic.volume = 0.5;
+      bgMusic.play().catch(() => {
+        console.log("Autoplay blocked, user must interact.");
+      });
+    }
+
+    // Start music on any user interaction
+    document.body.addEventListener("click", startMusic);
+    document.body.addEventListener("keydown", startMusic);
 
     drawMaze();
   </script>
