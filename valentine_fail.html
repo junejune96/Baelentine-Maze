@@ -1,86 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Valentine's Fail</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heartbreak 💔</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Caveat:wght@600&family=Patrick+Hand&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap"
+      rel="stylesheet"
+    />
 
-  <style>
-    body {
-      background: url("fail_background.jpg") no-repeat center center;
-      background-size: cover;
-      background-attachment: fixed;
-      text-align: center;
-      font-family: "Arial", sans-serif;
-      margin: 0;
-      padding: 10px;
-    }
+    <style>
+      body {
+        background-color: #ffd6e8;
+        text-align: center;
+        font-family: "Patrick Hand", cursive;
+        margin: 0;
+        padding: 30px;
+      }
 
-    h1 {
-      font-family: "Press Start 2P", cursive;
-      color: white;
-      text-shadow: 3px 3px 0 #ff0000, -3px -3px 0 #ff0000;
-      margin-top: 20px;
-      font-size: 2rem; /* This is for desktop */
-    }
-
-    p {
-      font-family: "Patrick Hand", cursive;
-      font-size: 1.5rem; /* For desktop */
-      color: #ff3333;
-    }
-
-    #sad-image {
-      width: 60%;
-      max-width: 300px;
-      border-radius: 10px;
-      margin-top: 20px;
-    }
-
-    #try-again {
-      margin-top: 20px;
-      padding: 15px 30px;
-      font-size: 1.2rem;
-      background-color: #ff4f4f;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-family: "Press Start 2P", cursive;
-      transition: 0.3s;
-    }
-
-    #try-again:hover {
-      background-color: #ff2222;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
       h1 {
-        font-size: 5vw; /* Makes h1 scalable on mobile */
+        font-size: 40px;
+        color: #ff3366;
+        text-shadow: 2px 2px 0 #ff6699;
       }
 
       p {
-        font-size: 4vw; /* Makes paragraph scalable on mobile */
+        font-size: 24px;
+        color: #d9534f;
       }
 
-      #try-again {
-        font-size: 4vw;
-        padding: 10px 20px;
+      img {
+        width: 100%;
+        max-width: 300px;
+        border-radius: 15px;
+        margin: 20px 0;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <h1>Yikes 😷</h1>
-  <p>Good luck with your shoes 👀</p>
+      .restart-btn {
+        background-color: #ff6699;
+        border: none;
+        padding: 12px 24px;
+        font-size: 20px;
+        color: white;
+        cursor: pointer;
+        border-radius: 15px;
+        font-family: "Patrick Hand", cursive;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+      }
 
-<img src="sad.gif" alt="Baekhyun Sad" />
+      .restart-btn:hover {
+        transform: scale(1.1);
+      }
 
-  <br />
-  <button id="try-again" onclick="window.location.href='index.html'">Try Again</button>
-</body>
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 30px;
+        }
+
+        p {
+          font-size: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Yikes 😷</h1>
+    <p>Good luck with your shoes 👀</p>
+    <img src="sad.gif" alt="Baekhyun Sad" />
+    <br />
+    <button class="restart-btn" onclick="window.location.href='index.html'">
+      Restart
+    </button>
+  </body>
 </html>
