@@ -1,86 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Valentine's Success</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Valentine's Day!</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Caveat:wght@600&family=Patrick+Hand&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Dancing+Script:wght@600&display=swap"
+      rel="stylesheet"
+    />
 
-  <style>
-    body {
-      background: url("success_background.jpg") no-repeat center center;
-      background-size: cover;
-      background-attachment: fixed;
-      text-align: center;
-      font-family: "Arial", sans-serif;
-      margin: 0;
-      padding: 10px;
-    }
+    <style>
+      body {
+        background-color: #ffe6f2;
+        text-align: center;
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 30px;
+      }
 
-    h1 {
-      font-family: "Press Start 2P", cursive;
-      color: white;
-      text-shadow: 3px 3px 0 #ff6699, -3px -3px 0 #ff6699;
-      margin-top: 20px;
-      font-size: 2rem; /* This is for desktop */
-    }
-
-    p {
-      font-family: "Patrick Hand", cursive;
-      font-size: 1.5rem; /* For desktop */
-      color: #f71c74;
-    }
-
-    #happy-image {
-      width: 60%;
-      max-width: 300px;
-      border-radius: 10px;
-      margin-top: 20px;
-    }
-
-    #play-again {
-      margin-top: 20px;
-      padding: 15px 30px;
-      font-size: 1.2rem;
-      background-color: #ff6699;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-family: "Press Start 2P", cursive;
-      transition: 0.3s;
-    }
-
-    #play-again:hover {
-      background-color: #ff3366;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
       h1 {
-        font-size: 5vw; /* Makes h1 scalable on mobile */
+        font-family: "Patrick Hand", cursive;
+        color: #ff6699;
+        font-size: 50px;
+        text-shadow: 2px 2px 0 #ff3366;
       }
 
       p {
-        font-size: 4vw; /* Makes paragraph scalable on mobile */
-      }
-
-      #play-again {
-        font-size: 4vw;
+        font-family: "Dancing Script", cursive;
+        font-size: 30px;
+        color: #f71c74;
+        display: inline-block;
         padding: 10px 20px;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <h1>YAYYYYYYY! You found Kyoongie! ❤️</h1>
-  <p>Happy Valentines Day!!!!</p>
+      img {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 20px;
+        margin-top: 20px;
+      }
 
-  <img id="happy-image" src="baekhyun_happy.png" alt="Happy Baekhyun" />
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 30px;
+        }
 
-  <br />
-  <button id="play-again" onclick="window.location.href='index.html'">Play Again</button>
-</body>
+        p {
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>YAYYYYYYY! You found Kyoongie! ❤️</h1>
+    <p>Happy Valentine's Day 💕</p>
+    <br />
+    <img src="success.gif" alt="Baekhyun celebrating Valentine's Day" />
+  </body>
 </html>
